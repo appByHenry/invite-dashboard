@@ -109,7 +109,16 @@ $(function () {
             data: Dbdata,
             success: function(data){
                 console.log(data);
-            }
+                $("#sendEmail").trigger("click");
+            },
+            complete: function () {
+                //called when complete
+                console.log('sending email functionality is completed.');
+            },
+            error: function () {
+                // Data not found in json want to offer for new user.
+                console.log("Error while sending email");
+            },
         });
     }
 });
