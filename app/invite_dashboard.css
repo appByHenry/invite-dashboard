@@ -90,3 +90,44 @@ table.guest_list_table {
     max-width: 1280px;
     margin: 20px auto;
 }
+
+.overall_numbers {
+    margin: 25px auto;
+    text-align: center;
+}
+
+.wedding_counts {
+    width: 30%;
+    display: inline-block;
+}
+
+.pooja_ceremony_counts {
+
+    width: 30%;
+    display: inline-block;
+}
+.wedding_count_title , .pooja_count_title {
+    margin-bottom: 10px;
+}
+
+.sent_email_list {
+    border: 2px solid orange;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.each_sent_mail_header {
+    font-size: 1.3rem;
+    font-family: cursive;
+    font-weight: 800;
+    display: block;
+    background-color: antiquewhite;
+    border-radius: 10px;
+    padding: 10px 0px;
+    color: #5d1818;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.each_single_email {
+    margin: 5px 20px;
+}

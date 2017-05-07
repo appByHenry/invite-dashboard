@@ -6,7 +6,7 @@
     <title>Invitation Dashboard</title>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
     <script type="text/javascript" src="app/scripts/jquery.base64.js"></script>
-    <script type="text/javascript" src="app/scripts/invite_dashboard.js"></script>
+    <script type="text/javascript" src="app/scripts/invitation_dashboard.js"></script>
     <script src="app/scripts/modal.js"></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
@@ -17,64 +17,90 @@
     <link href="app/invite_dashboard.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
-    <div class="main_holder">
-        <div class="meain_heading">
-            Invitation dashboard
-        </div>
-        <div class="email_choice_holder">
-            <div class="choice_ofr_invitaiton left_portion">
-                <div class="choices">
-                    <div id="eve_wed" class="chkbox_container"><i id="chkmark_icon" class="display_none_class custom_icon icon-circle" data-ceremony="onlyWedding"></i><span class="chkbox"  id="2-invite"></span><span class="chk_words"> Wedding Ceremony </span></div>
-                    <div id="eve_wed2" class="chkbox_container"><i id="chkmark_icon2" class="display_none_class custom_icon icon-circle"  data-ceremony="Weddingplus"></i><span class="chkbox"  id="3-invite"></span><span class="chk_words"> Wedding and all Ceremony </span></div>
+<div class="main_holder">
+    <div class="meain_heading">
+        Invitation dashboard
+    </div>
+    <div class="email_choice_holder">
+        <div class="choice_ofr_invitaiton left_portion">
+            <div class="choices">
+                <div id="eve_wed" class="chkbox_container"><i id="chkmark_icon" class="display_none_class custom_icon icon-circle" data-ceremony="onlyWedding"></i><span class="chkbox"  id="2-invite"></span><span class="chk_words"> Wedding Ceremony </span></div>
+                <div id="eve_wed2" class="chkbox_container"><i id="chkmark_icon2" class="display_none_class custom_icon icon-circle"  data-ceremony="Weddingplus"></i><span class="chkbox"  id="3-invite"></span><span class="chk_words"> Wedding and all Ceremony </span></div>
 
-                </div>
             </div>
-            <div class="adding_invite_email right_portion">
-                <div class="email_title">Add Email Id: (separate by comma like abc@fmail.con,jsein@xuz.com)</div>
-                <div class="emailText_containser"><textarea id="email_container" class="mail_txt"></textarea></div>
-                <input type="button" class="send_mail" value="Send Invitation" id="send_invite" />
-            </div>
+        </div>
+        <div class="adding_invite_email right_portion">
+            <div class="email_title">Add Email Id: (separate by comma like abc@fmail.con,jsein@xuz.com)</div>
+            <div class="emailText_containser"><textarea id="email_container" class="mail_txt"></textarea></div>
+            <input type="button" class="send_mail" value="Send Invitation" id="send_invite" />
         </div>
     </div>
 
-    <div class="email_empty_error" id="email_text_empty" data-target="emailTextEmpty" data-toggle="modal" style="visibility: hidden"></div>
-    <div id="emailTextEmpty" class="modal">
-        <div class="modal-window">
-            <span class="close" data-dismiss="modal">&times;</span>
-            <div class="">
-                <h4 class="rsvp_header">You did not provided any email Id.</h4>
-            </div>
-            <div class="">
-                <h4 class="rsvp_header">Or you did not select any choice.</h4>
-            </div>
+    <div class="overall_numbers">
+        <div class="wedding_counts">
+            <div class="wedding_count_title"> Wedding ceremony count:</div>
+            <div class="wed_cer_count"><span>Number of people: </span><span class="wedding_people"></span></div>
+            <div class="wed_cer_child"><span>Number of children: </span><span class="wedding_ceremony_child"></span></div>
         </div>
-    </div>
-
-    <div class="email_empty_error" id="sendEmail" data-target="emailsentSuccess" data-toggle="modal" style="visibility: hidden"></div>
-    <div id="emailsentSuccess" class="modal">
-        <div class="modal-window">
-            <span class="close" data-dismiss="modal">&times;</span>
-            <div class="">
-                <h4 class="rsvp_header">Email sent successfully.</h4>
-            </div>
+        <div class="pooja_ceremony_counts">
+            <div class="pooja_count_title"> Pooja ceremony count:</div>
+            <div class="pooja_cer_count"><span>Number of people: </span><span class="pooja_people"></span></div>
+            <div class="pooja_cer_child"><span>Number of children: </span><span class="pooja_cermony_child"></span></div>
         </div>
+
     </div>
+    <div class="guest_list_details">
+        <table class="guest_list_table">
 
-<div class="guest_list_details">
-    <table class="guest_list_table">
 
+            <tr class="table_heading">
+                <th>Email</th>
+                <th>Name</th>
+                <th>Wedding</th>
+                <th>Pooja(Ohm)</th>
+                <th>No. of people</th>
+                <th>No. of children</th>
+            </tr>
 
-        <tr class="table_heading">
-            <th>Email</th>
-            <th>Name</th>
-            <th>Wedding</th>
-            <th>Jinali's Pooja</th>
-            <th>Harshil's Pooja</th>
-            <th>No. of people</th>
-            <th>No. of children</th>
-        </tr>
+        </table>
+    </div>
+    <div class="sent_email_list">
+        <div class="each_sent_mail_header">Invitation already sent.</div>
 
-    </table>
+    </div>
 </div>
+
+<div class="email_empty_error" id="email_text_empty" data-target="emailTextEmpty" data-toggle="modal" style="visibility: hidden"></div>
+<div id="emailTextEmpty" class="modal">
+    <div class="modal-window">
+        <span class="close" data-dismiss="modal">&times;</span>
+        <div class="">
+            <h4 class="rsvp_header">You did not provided any email Id.</h4>
+        </div>
+        <div class="">
+            <h4 class="rsvp_header">Or you did not select any choice.</h4>
+        </div>
+    </div>
+</div>
+
+<div class="email_empty_error" id="sendEmail" data-target="emailsentSuccess" data-toggle="modal" style="visibility: hidden"></div>
+<div id="emailsentSuccess" class="modal">
+    <div class="modal-window">
+        <span class="close" data-dismiss="modal">&times;</span>
+        <div class="">
+            <h4 class="rsvp_header">Email sent successfully.</h4>
+        </div>
+    </div>
+</div>
+<div class="email_empty_error" id="emailNotValid" data-target="emailAddrsNotValid" data-toggle="modal" style="visibility: hidden"></div>
+<div id="emailAddrsNotValid" class="modal">
+    <div class="modal-window">
+        <span class="close" data-dismiss="modal">&times;</span>
+        <div class="invalidmail_list">
+
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
