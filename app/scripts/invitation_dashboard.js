@@ -80,7 +80,7 @@ $(function () {
 
 
                     element.g_data.h_cer;
-
+                    var wd_wishes = element.g_data.wishes;
                     var no_of_people = element.g_data.no_ppl;
                     var no_of_people_int = parseInt(no_of_people);
 
@@ -96,6 +96,13 @@ $(function () {
                     {
                         pooja_cermony = pooja_cermony+no_of_people_int;
                         pooja_cermony_child = pooja_cermony_child+no_of_child_int;
+                    }
+
+                    if(wd_wishes != "NA")
+                    {
+                        var each_wish = '<div class="wd_wish_style"><div class="whiser_name">* '+element.g_data.name+' *</div><div>'+wd_wishes+'</div></div>';
+                        $('#wd_wishes').append(each_wish);
+
                     }
 
                     var each_row = '<tr class="table_data_row">'+

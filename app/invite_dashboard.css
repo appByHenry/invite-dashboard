@@ -131,3 +131,26 @@ table.guest_list_table {
 .each_single_email {
     margin: 5px 20px;
 }
+
+
+div#wd_wishes {
+    border: 2px solid orange;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+.wd_wish_style {
+    display: inline-block;
+    border: 1px solid silver;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    width: 20%;
+    vertical-align: top;
+    background-color: #fff3f3;
+    margin: 5px;
+}
+.whiser_name {
+    margin-bottom: 5px;
+    text-decoration: underline;
+}
