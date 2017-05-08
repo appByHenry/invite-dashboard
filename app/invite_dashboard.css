@@ -137,6 +137,7 @@ div#wd_wishes {
     padding: 20px;
     border-radius: 10px;
     text-align: center;
+    font-family: cursive;
 }
 .wd_wish_style {
     display: inline-block;
@@ -152,6 +153,9 @@ div#wd_wishes {
 .whiser_name {
     margin-bottom: 5px;
     text-decoration: underline;
+    color: #5d1818;
+    font-weight: 900;
+    font-size: 1.1rem;
 }
 
 
