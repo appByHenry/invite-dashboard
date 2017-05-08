@@ -96,18 +96,30 @@ table.guest_list_table {
     text-align: center;
 }
 
+
 .wedding_counts {
     width: 30%;
     display: inline-block;
+
+    border: 2px solid orange;
+    padding: 10px 0px;
+    border-radius: 5px;
 }
 
 .pooja_ceremony_counts {
 
     width: 30%;
     display: inline-block;
+
+    border: 2px solid orange;
+    padding: 10px 0px;
+    border-radius: 5px;
 }
 .wedding_count_title , .pooja_count_title {
     margin-bottom: 10px;
+    text-decoration: underline;
+    font-size:1.1rem;
+    color: #5d1818;
 }
 
 .sent_email_list {
