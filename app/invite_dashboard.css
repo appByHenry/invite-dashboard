@@ -132,7 +132,6 @@ table.guest_list_table {
     margin: 5px 20px;
 }
 
-
 div#wd_wishes {
     border: 2px solid orange;
     padding: 20px;
@@ -153,4 +152,19 @@ div#wd_wishes {
 .whiser_name {
     margin-bottom: 5px;
     text-decoration: underline;
+}
+
+
+.collapse-expand-rsvp, .collapse-expand-sent-emails {
+    font-size: 1.2rem;
+    border: 2px solid;
+    margin-top: 15px;
+    padding: 5px;
+    border-radius: 5px;
+    border-color: #ae70e8;
+    color: #753800;
+    cursor: pointer;
+}
+span.ch-down {
+    margin-right: 5px;
 }

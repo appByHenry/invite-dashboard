@@ -106,7 +106,7 @@ $(function () {
                     }
 
                     var each_row = '<tr class="table_data_row">'+
-                        '<td  style="width:300px;">'+decodedEmail+'</td><td  style="width:100px;">'+element.g_data.name+'</td><td>'+element.g_data.wed_cer+'</td>' +
+                        '<td  style="width:300px;">'+decodedEmail+'</td><td  style="width:150px;">'+element.g_data.name+'</td><td>'+element.g_data.wed_cer+'</td>' +
                         '<td>'+element.g_data.j_cer+'</td><td>'+element.g_data.no_ppl+'</td><td>'+element.g_data.no_chldrn+'</td>'+
                         '</tr>';
                     $('.guest_list_table').append(each_row);
@@ -134,6 +134,19 @@ $(function () {
         $(this).siblings().find("i").addClass("display_none_class");
     });
 
+    // For RSVP data
+    $(document).on("click", ".collapse-expand-rsvp", function () {
+        console.log(this);
+        $(".guest_list_details").toggle(400);
+        $(this).find("i").toggleClass("fa-chevron-up fa-chevron-down");
+    });
+
+    // For sent email invitations data
+    $(document).on("click", ".collapse-expand-sent-emails", function () {
+        console.log(this);
+        $(".sent_email_list").toggle(400);
+        $(this).find("i").toggleClass("fa-chevron-up fa-chevron-down");
+    });
     function randomstringGen(len)
     {
         var text="";
