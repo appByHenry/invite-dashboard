@@ -185,6 +185,113 @@ $(function () {
         });
     }
     //console.log(stringGen(3));
+    // Resend Email functionality
+
+    $(document).on("click", "#resend_invite", function () {
+        var check_ceremony = 0;
+        console.log(this);
+        var emailString = $('textarea.mail_txt').val();
+        var Emailarray;
+        var whichEvents = "";
+        var gestEmailObj = {};
+        $(".invalidmail_list").empty();
+
+
+        console.log("Reminder option Any one choice is selected");
+        if(emailString)
+        {
+            var countInvalidEmail=0;
+            Emailarray = emailString.split(',');
+            for(var i=0; i<Emailarray.length; i++)
+            {
+                Emailarray[i];
+                var checkValidEmail = ValidateEmail(Emailarray[i]);
+                if(!checkValidEmail)
+                {
+                    countInvalidEmail++;
+                    $(".invalidmail_list").append('<div id="invalid_email_'+i+'">This email id is invalid:> '+Emailarray[i]+'</div>');
+                    console.log("This email is not valid", Emailarray[i]);
+                }
+                else
+                {
+                    console.log("This email is valid");
+                }
+            }
+            var rejectedEmailArry = [];
+            var accepted_count = 0;
+            if(countInvalidEmail == 0)
+            {
+                // email ids are valid..
+                var i = 0;
+
+                var interval = setInterval(function() {
+                    if (i<Emailarray.length) {
+                        console.log("Resend Invite fecting email after 1 minute:", Emailarray[i]);
+
+                        var Dbdata = {"eachMail": Emailarray[i]};
+                        console.log(Dbdata);
+                        Dbdata = JSON.stringify(Dbdata);
+                        $.ajax({
+                            url: 'https://wd-app-db.herokuapp.com/resendemails',
+                            contentType: "application/json; charset=utf-8",
+                            type: 'POST',
+                            crossDomain: true,
+                            data: Dbdata,
+                            success: function(data){
+                                console.log(data);
+                                var acceptedOrnot = data.accepted.length;
+                                if(acceptedOrnot > 0)
+                                {
+                                    accepted_count++;
+                                }
+                                var rejected_emailid = data.rejected.length;
+                                if(rejected_emailid > 0)
+                                {
+                                    rejectedEmailArry.push(Emailarray[i]);
+                                    console.log("rejeceted email id: ", Emailarray[i]);
+                                }
+
+
+                            },
+                            complete: function () {
+                                //called when complete
+                                console.log('reminder sending email functionality is completed.');
+                            },
+                            error: function () {
+                                // Data not found in json want to offer for new user.
+                                console.log("Error while sending email");
+                                console.log("rejeceted email id: ", Emailarray[i]);
+                            },
+                        });
+
+                        i++;
+                    }
+                    else {
+                        clearInterval(interval);
+                        console.log("length of email array ", Emailarray.length);
+                        console.log("length of accepted count", accepted_count);
+                        if(rejectedEmailArry.length > 0)
+                        {
+                            alert("couple of emailid's are rejeceted. Please look at the console log");
+                        }
+                        console.log("Clear interval");
+
+                    }
+                }, 15000);
+
+            }
+            else
+            {
+                $("#emailNotValid").trigger("click");
+            }
+        }
+        else
+        {
+            $("#email_text_empty").trigger("click");
+        }
+
+    });
+
 
     $(document).on("click", "#send_invite", function () {
         var check_ceremony = 0;
